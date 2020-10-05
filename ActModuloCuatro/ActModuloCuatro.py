@@ -2,37 +2,7 @@
 # Fecha: Septiembre 29 de 2020
 # Autor: Andrés Mauricio Ortiz Gallego
 
-# Definición de variobles para los cultivos
-#cultivo 1
-nombre_cultivo_uno = ""
-dias_horario_mantenimiento_cultivo_uno = ""
-dias_horario_regado_cultivo_uno = ""
-dias_abono_cultivo_uno = ""
-dias_fase_vegetativa_cultivo_uno = ""
-detalle_fase_vegetativa_cultivo_uno = ""
-dias_fase_reproductiva_cultivo_uno = ""
-detalle_fase_reproductiva_cultivo_uno = ""
-
-#cultivo 2
-nombre_cultivo_dos=""
-dias_horario_mantenimiento_cultivo_dos = ""
-dias_horario_regado_cultivo_dos = ""
-dias_abono_cultivo_dos = ""
-dias_fase_vegetativa_cultivo_dos = ""
-detalle_fase_vegetativa_cultivo_dos = ""
-dias_fase_reproductiva_cultivo_dos = ""
-detalle_fase_reproductiva_cultivo_dos = ""
-
-#cultivo 3
-nombre_cultivo_tres = ""
-dias_horario_mantenimiento_cultivo_tres = ""
-dias_horario_regado_cultivo_tres = ""
-dias_abono_cultivo_tres = ""
-dias_fase_vegetativa_cultivo_tres = ""
-detalle_fase_vegetativa_cultivo_tres = ""
-dias_fase_reproductiva_cultivo_tres = ""
-detalle_fase_reproductiva_cultivo_tres = ""
-
+# variable para iniciar el ciclo while
 operacion = 5
 
 print("+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -+")
@@ -64,10 +34,10 @@ print("Ahora ingrese las ETAPAS para el cultivo 2 ")
 print()
 dias_fase_vegetativa_cultivo_dos = input("Ingrese los días para la fase vegetativa: ")
 detalle_fase_vegetativa_cultivo_dos = input("Ingrese algún comentario o detalle para la fase: ")
-dias_fase_reproductiva_cultivo_dos = input("Ingrese los dias para la fase reproductiva: ")
+dias_fase_reproductiva_cultivo_dos = input("Ingrese los días para la fase reproductiva: ")
 detalle_fase_reproductiva_cultivo_dos = input("Ingrese algún comentario o detalle para la fase reproductiva: ")
 print()
-# Capturamos los datos para el cultivo 3
+# Capturamos los datos para el cultivo tres
 print()
 nombre_cultivo_tres = input("Ingrese el nombre del cultivo 3: ")
 dias_horario_mantenimiento_cultivo_tres = input("Ingrese los días y horarios de mantenimiento: ")
@@ -78,11 +48,12 @@ print("Ahora ingrese las ETAPAS para el cultivo 3 ")
 print()
 dias_fase_vegetativa_cultivo_tres = input("Ingrese los días para la fase vegetativa: ")
 detalle_fase_vegetativa_cultivo_tres = input("Ingrese algún comentario o detalle para la fase: ")
-dias_fase_reproductiva_cultivo_tres = input("Ingrese los dias para la fase reproductiva: ")
+dias_fase_reproductiva_cultivo_tres = input("Ingrese los días para la fase reproductiva: ")
 detalle_fase_reproductiva_cultivo_tres = input("Ingrese algún comentario o detalle para la fase reproductiva: ")
 print()
 print("Seleccione una opción del menú ")
 print()
+# Inicializamos el ciclo que mostrará el menú principal
 while (operacion > 0 and operacion != 3):
     operacion = int(input("""
                 + - - - + - - - - - - - - - - - - - - - - - - +
@@ -93,11 +64,13 @@ while (operacion > 0 and operacion != 3):
                 |   3   + - - - - - - - SALIR - - - - - - - - +
                 + - - - + - - - - - - - - - - - - - - - - - - +
                 """))
+# Realizamos la comparación de la opción seleccionada
     if (operacion == 1):
         print()
         print("**************************** Gestión del cultivo *************************")
         print()
         print("Por favor seleccione el cultivo")
+        # Submenú para la selección de cultivo
         operacion_cultivo = int(input("""
                         + - - - + - - - - - - - - - - - - - - +
                         |   1   + - - - - CULTIVO UNO - - - - +
@@ -129,6 +102,7 @@ while (operacion > 0 and operacion != 3):
         print("**************************** Etapas de los cultivos *************************")
         print()
         print("Por favor seleccione el cultivo")
+        # Submenú para la selección de cultivo
         operacion_cultivo = int(input("""
                                 + - - - + - - - - - - - - - - - - - - +
                                 |   1   + - - - - CULTIVO UNO - - - - +
