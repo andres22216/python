@@ -1,145 +1,100 @@
-print("Hello world!!!!!!")
-a = int("18")
-print("Tengo "+ str(a) + " años")
+# Se crea un Diccionario con Iniciales de Días de la Semana
+my_schedule = {'L': {}, 'M': {}, 'W': {}, 'J': {}, 'V': {}}
 
-nombre: str = input("ingrese su nombre: ")
+# Se crea un Sistema de Menú sencillo
+repeat_menu = True
+while repeat_menu:
+    print('0 - Agregar Clase')
+    print('1 - Modificar Clase')
+    print('2 - Eliminar Clase')
+    print('3 - Ver Horario')
+    menu_selection = int(input('Ingrese su Opción: '))
+    if menu_selection == 0:
+        print(' ========== AGREGAR CLASE ========== ')
+        day_selection = ''
+        while day_selection not in my_schedule:
+            day_selection = input('Ingrese el día para la Nueva Clase: ')
 
-prueba_flotante = 5.80
+            # Se evalúa la existencia de un Día en el Diccionario
+            if day_selection not in my_schedule: print('No se encuentra el día ingresado.')
 
-print(nombre)
-print(prueba_flotante)
+        hour_selection = ''
+        while hour_selection not in my_schedule[day_selection]:
+            hour_selection = int(input('Ingrese la hora para la Nueva Clase: '))
 
-nombre = input("Ingrese su nombre nuevamente: ")
-edad = int(input("Ingrese su eded: "))
-print("Hola a todos soy "+nombre+" y tengo "+str(edad)+" años")
+            # Se evalúa la existencia de una Hora en el Diccionario del Día
+            if hour_selection in my_schedule[day_selection]:
+                print('Esta hora ya es usada por', my_schedule[day_selection][hour_selection])
+            else:
+                new_class = input('Ingrese el nombre de la Clase: ')
+                my_schedule[day_selection][hour_selection] = new_class
+                print('Se agregó la Clase', new_class, 'el día', day_selection, 'a la hora', hour_selection)
 
+    elif menu_selection == 1:
+        print(' ========== MODIFICAR CLASE ========== ')
+        day_selection = ''
+        while day_selection not in my_schedule:
+            day_selection = input('Ingrese el día de la Clase a Modificar: ')
 
-# Este código es solo un ejemplo que está construído únicamente con fines educativos
-# Aplique y adapte sus propios conocimientos para la solución de la Práctica
+            # Se evalúa la existencia de un Día en el Diccionario
+            if day_selection not in my_schedule:
+                print('No se encuentra el día ingresado.')
 
-# Ingreso del producto o cultivo a gestionar
+        hour_selection = ''
+        while hour_selection not in my_schedule[day_selection]:
+            hour_selection = int(input('Ingrese la hora de la Clase a Modificar: '))
 
-while (True):
-    productoValido = False
-    accionValida = False
+            # Se evalúa la existencia de una Hora en el Diccionario del Día
+            if hour_selection not in my_schedule:
+                print('No existe Clase a esta Hora')
+            else:
+                new_class = input('Ingrese el nombre de la Clase: ')
+                my_schedule[day_selection][hour_selection] = new_class
+                print('Se cambió la clase del día', day_selection, 'a la hora', hour_selection, 'por la Clase',
+                      new_class)
 
-    while (accionValida == False):
+    elif menu_selection == 2:
+        print(' ========== ELIMINAR CLASE ========== ')
+        day_selection = ''
+        while day_selection not in my_schedule:
+            day_selection = input('Ingrese el día de la Clase a Eliminar: ')
 
-        # Muestra menú de las acciones
-        accion = input("""
-            MENÚ -------
-            Elija una acción:
-            1. GESTIÓN DEL CULTIVO
-            2. VER ETAPAS DEL CULTIVO
-            3. Salir
-            """)
+            # Se evalúa la existencia de un Día en el Diccionario
+            if day_selection not in my_schedule:
+                print('No se encuentra el día ingresado.')
 
-        if (accion == "1"):
-            # GESTIÓN DEL CULTIVO
-            productoValido = False
+        hour_selection = ''
+        while hour_selection not in my_schedule[day_selection]:
+            hour_selection = int(input('Ingrese la hora de la Clase a Eliminar: '))
 
-            # Se pide el producto que desea gestionar
-            while (productoValido == False):
-                # Mientras no se ingrese un producto válido, seguirá pidiendolo
-                cultivo = input("Nombre del cultivo (maiz ó arroz) : ")
-                if (cultivo == "maiz"):
-                    productoValido = True
-                elif (cultivo == "arroz"):
-                    productoValido = True
+            # Se evalúa la existencia de un Día en el Diccionario
+            if hour_selection not in my_schedule:
+                print('No existe Clase a esta Hora.')
+            else:
+                current_class = my_schedule[day_selection][hour_selection]
+                del_confirm = bool(int(input('¿Seguro que desea Eliminar la Clase', current_class, '? (S/N): ')))
+                if del_confirm == 'S':
+                    del my_schedule[day_selection][hour_selection]
                 else:
-                    productoValido = False
+                    print('Se ha cancelado la acción de Eliminar.')
 
-            print("GESTIÓN DE CULTIVO DE --> " + cultivo)
+    elif menu_selection == 3:
+        day_selection = ''
+        while day_selection not in my_schedule:
+            day_selection = input('Ingrese el día para ver el Horario: ')
 
-            if (cultivo == "maiz"):
-                # Días y horarios para actividades sobre el cultivo
-                print("""
-            DIAS Y HORARIOS RECOMENDADOS 
+            # Se evalúa la existencia de un Día en el Diccionario
+            if day_selection not in my_schedule:
+                print('No se encuentra el día ingresado.')
+            else:
+                for i in my_schedule[day_selection].keys():
+                    print('Hora:', i, '- Clase:', my_schedule[day_selection][i])
+    else:
+        print('Opción Invalida')
 
-            Mantenimiento: 
-                Lunes, 4:00 pm
-                Viernes, 6:00 pm
-
-            Regado:
-                Martes, Jueves y Sábado, 8:00 am
-                Domingo Y Lunes 10:00 am
-
-            Abono:
-                Martes, 5:00 pm
-                Sábado, 7:00 am
-
-                """)
-
-            elif (cultivo == "arroz"):
-                print("""
-          DIAS Y HORARIOS RECOMENDADOS 
-
-          Mantenimiento: 
-              Miercoles y Jueves, 7:00 am
-              Sábado y Domingo, 8:00 am
-
-          Regado:
-              Martes y Sábado, 10:00 am
-
-          Abono:
-              Lunes, 8:00 pm
-
-              """)
-
-        elif (accion == "2"):
-            # ETAPAS DE UN CULTIVO
-            productoValido = False
-
-            # Se pide el producto que se desea
-            while (productoValido == False):
-                # Mientras no se ingrese un producto válido, seguira pidiendolo
-                cultivo = input("Nombre del cultivo:  ")
-                if (cultivo == "maiz"):
-                    productoValido = True
-                elif (cultivo == "arroz"):
-                    productoValido = True
-                else:
-                    print("Producto no encontrado...")
-                    productoValido = False
-
-            print("ETAPAS DE CULTIVO DE --> " + cultivo)
-
-            if (cultivo == "maiz"):
-                # Días y horarios para actividades sobre el cultivo
-                print("""
-            ETAPA 1 - Fase Vegetativa
-              De 5 a 30 días luego de la siembra
-              - Crecimiento de las plántulas
-              - Crecimiento vegetativo
-
-            ETAPA 2 - Fase reproductiva
-              De 55 a 112 días después de la siembra
-              - Floración y la fecundación 
-              - Llenado de grano y la madurez 
-
-                """)
-
-            elif (cultivo == "arroz"):
-                print("""
-
-            ETAPA 1 - Fase Vegetativa
-              - Se da desde los 4 a los 65 días.
-              - La planta se desarrolla desde la semilla
-                hasta obtener un cuerpo vegetal.
-
-            ETAPA 2 - Fase reproductiva
-              - Se da de los 60 a los 76 días 
-              - La planta se encuentra en su estado de floración
-
-            ETAPA 3 - Fase maduración 
-              - Se da de 110 a 12 días
-              - La planta adquiere madurez en su floración
-                completando el crecicimiento 
-                del producto que ahora está listo para cosechar.
-
-              """)
-        elif (accion == "3"):
-            break
-
-        else:
-            print("       Opción inválida")
+    repeat_menu = bool(int(input('\n¿Desea continuar? (S/N): ')))
+    if repeat_menu == 'S':
+        repeat_menu = True
+    else:
+        repeat_menu = False
+    print()
