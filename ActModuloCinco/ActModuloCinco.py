@@ -38,6 +38,7 @@ while (operacion > 0 and operacion != 5):
         print("| - - - - - - - - - - - AGREGANDO CLASES - - - - - - - - - - |")
         print("+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -+")
         print("Por favor ingrese el día para el cual desea agregar la clase")
+        # Definimos el menú para seleccionar los días
         dia = input("""Nota: para mayor facilidad los días se identifican asi:
         
         L: Lunes
@@ -130,6 +131,7 @@ while (operacion > 0 and operacion != 5):
         print("| - - - - - - - - - - - MODIFICANDO CLASES - - - - - - - - - - |")
         print("+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  +")
         print("Por favor ingrese el día para el cual desea modificar la clase")
+        # Definimos el menú para seleccionar los días
         dia = input("""Nota: para mayor facilidad los días se identifican asi:
 
                 L: Lunes
@@ -217,6 +219,7 @@ while (operacion > 0 and operacion != 5):
         print("| - - - - - - - - - - - ELIMINANDO CLASES - - - - - - - - - - |")
         print("+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - +")
         print("Por favor ingrese el día para el cual desea eliminar la clase")
+        # Definimos el menú para seleccionar los días
         dia = input("""Nota: para mayor facilidad los días se identifican asi:
 
                         L: Lunes
