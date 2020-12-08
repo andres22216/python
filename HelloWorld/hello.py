@@ -1,100 +1,54 @@
-# Se crea un Diccionario con Iniciales de Días de la Semana
-my_schedule = {'L': {}, 'M': {}, 'W': {}, 'J': {}, 'V': {}}
+from tkinter import *
 
-# Se crea un Sistema de Menú sencillo
-repeat_menu = True
-while repeat_menu:
-    print('0 - Agregar Clase')
-    print('1 - Modificar Clase')
-    print('2 - Eliminar Clase')
-    print('3 - Ver Horario')
-    menu_selection = int(input('Ingrese su Opción: '))
-    if menu_selection == 0:
-        print(' ========== AGREGAR CLASE ========== ')
-        day_selection = ''
-        while day_selection not in my_schedule:
-            day_selection = input('Ingrese el día para la Nueva Clase: ')
+def hija():
+    ## Crea la ventana hija.
+    t1 = Toplevel(root, bg="blue")
 
-            # Se evalúa la existencia de un Día en el Diccionario
-            if day_selection not in my_schedule: print('No se encuentra el día ingresado.')
+    ## Establece el tamaño para la ventana.
+    t1.geometry('400x200+20+20')
 
-        hour_selection = ''
-        while hour_selection not in my_schedule[day_selection]:
-            hour_selection = int(input('Ingrese la hora para la Nueva Clase: '))
+    ## Provoca que la ventana tome el focus
+    t1.focus_set()
 
-            # Se evalúa la existencia de una Hora en el Diccionario del Día
-            if hour_selection in my_schedule[day_selection]:
-                print('Esta hora ya es usada por', my_schedule[day_selection][hour_selection])
-            else:
-                new_class = input('Ingrese el nombre de la Clase: ')
-                my_schedule[day_selection][hour_selection] = new_class
-                print('Se agregó la Clase', new_class, 'el día', day_selection, 'a la hora', hour_selection)
+    ## Deshabilita todas las otras ventanas hasta que
+    ## esta ventana sea destruida.
+    t1.grab_set()
 
-    elif menu_selection == 1:
-        print(' ========== MODIFICAR CLASE ========== ')
-        day_selection = ''
-        while day_selection not in my_schedule:
-            day_selection = input('Ingrese el día de la Clase a Modificar: ')
+    ## Indica que la ventana es de tipo transient, lo que significa
+    ## que la ventana aparece al frente del padre.
+    t1.transient(master=root)
 
-            # Se evalúa la existencia de un Día en el Diccionario
-            if day_selection not in my_schedule:
-                print('No se encuentra el día ingresado.')
+    ## Crea un widget Label en la ventana
+    Label(t1, text='Ventana hija', bg="blue").pack(padx=10, pady=10)
 
-        hour_selection = ''
-        while hour_selection not in my_schedule[day_selection]:
-            hour_selection = int(input('Ingrese la hora de la Clase a Modificar: '))
+    ## Crea un widget que permite cerrar la ventana,
+    ## para ello indica que el comando a ejecutar es el
+    ## metodo destroy de la misma ventana.
+    Button(t1, text="Cerrar", bg="green", command=t1.destroy).pack()
 
-            # Se evalúa la existencia de una Hora en el Diccionario del Día
-            if hour_selection not in my_schedule:
-                print('No existe Clase a esta Hora')
-            else:
-                new_class = input('Ingrese el nombre de la Clase: ')
-                my_schedule[day_selection][hour_selection] = new_class
-                print('Se cambió la clase del día', day_selection, 'a la hora', hour_selection, 'por la Clase',
-                      new_class)
+    ## Crea un entry.
+    e = Entry(t1, bg="lightyellow")
 
-    elif menu_selection == 2:
-        print(' ========== ELIMINAR CLASE ========== ')
-        day_selection = ''
-        while day_selection not in my_schedule:
-            day_selection = input('Ingrese el día de la Clase a Eliminar: ')
+    ## Establece el focus en el entry.
+    e.focus()
+    e.pack()
 
-            # Se evalúa la existencia de un Día en el Diccionario
-            if day_selection not in my_schedule:
-                print('No se encuentra el día ingresado.')
+    ## Pausa el mainloop de la ventana de donde se hizo la invocación.
+    t1.wait_window(t1)
 
-        hour_selection = ''
-        while hour_selection not in my_schedule[day_selection]:
-            hour_selection = int(input('Ingrese la hora de la Clase a Eliminar: '))
 
-            # Se evalúa la existencia de un Día en el Diccionario
-            if hour_selection not in my_schedule:
-                print('No existe Clase a esta Hora.')
-            else:
-                current_class = my_schedule[day_selection][hour_selection]
-                del_confirm = bool(int(input('¿Seguro que desea Eliminar la Clase', current_class, '? (S/N): ')))
-                if del_confirm == 'S':
-                    del my_schedule[day_selection][hour_selection]
-                else:
-                    print('Se ha cancelado la acción de Eliminar.')
+## Crea la ventana para la aplicación
+root = Tk()
 
-    elif menu_selection == 3:
-        day_selection = ''
-        while day_selection not in my_schedule:
-            day_selection = input('Ingrese el día para ver el Horario: ')
+## Establece un título y un tamaño para la ventana
+root.title('Ventana principal')
+root.geometry('800x400+10+10')
 
-            # Se evalúa la existencia de un Día en el Diccionario
-            if day_selection not in my_schedule:
-                print('No se encuentra el día ingresado.')
-            else:
-                for i in my_schedule[day_selection].keys():
-                    print('Hora:', i, '- Clase:', my_schedule[day_selection][i])
-    else:
-        print('Opción Invalida')
+## Crea una etiqueta.
+Label(root, text='Esta es la ventana principal').pack(pady=10)
 
-    repeat_menu = bool(int(input('\n¿Desea continuar? (S/N): ')))
-    if repeat_menu == 'S':
-        repeat_menu = True
-    else:
-        repeat_menu = False
-    print()
+## Crea un botón, desde el cual se puede lanzar una
+## ventana de tipo modal.
+Button(root, text="ventana", command=hija).pack()
+
+root.mainloop()

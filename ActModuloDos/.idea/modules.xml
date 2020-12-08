@@ -4,8 +4,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../ActModuloCinco/.idea/ActModuloCinco.iml" filepath="$PROJECT_DIR$/../ActModuloCinco/.idea/ActModuloCinco.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/ActModuloDos.iml" filepath="$PROJECT_DIR$/.idea/ActModuloDos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ActModuloSeis/.idea/ActModuloSeis.iml" filepath="$PROJECT_DIR$/../ActModuloSeis/.idea/ActModuloSeis.iml" />
       <module fileurl="file://$PROJECT_DIR$/../ActModuloTres/.idea/ActModuloTres.iml" filepath="$PROJECT_DIR$/../ActModuloTres/.idea/ActModuloTres.iml" />
       <module fileurl="file://$PROJECT_DIR$/../HelloWorld/.idea/HelloWorld.iml" filepath="$PROJECT_DIR$/../HelloWorld/.idea/HelloWorld.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ProyectoFinal/.idea/ProyectoFinal.iml" filepath="$PROJECT_DIR$/../ProyectoFinal/.idea/ProyectoFinal.iml" />
       <module fileurl="file://$PROJECT_DIR$/../RetoDos/.idea/RetoDos.iml" filepath="$PROJECT_DIR$/../RetoDos/.idea/RetoDos.iml" />
       <module fileurl="file://$PROJECT_DIR$/../RetoUno/.idea/RetoUno.iml" filepath="$PROJECT_DIR$/../RetoUno/.idea/RetoUno.iml" />
     </modules>
